@@ -11,18 +11,15 @@
             "email":"yasmanycm@gmail.com"
         }
     ],
-
     "require": {
         "php": ">=5.3.2",
-        "symfony/framework-bundle": "*",
-        "symfony/security-bundle": "*",
-        "symfony/twig-bundle": "*",
+        "symfony/framework-bundle": ">=2.1",
+        "symfony/security-bundle": ">=2.1",
+        "symfony/twig-bundle": ">=2.1",
         "bitgandtter/google-api": "dev-master"
     },
-
     "autoload": {
         "psr-0": { "FOS\\GoogleBundle": "" }
     },
-
     "target-dir": "FOS/GoogleBundle"
 }

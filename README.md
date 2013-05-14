@@ -32,7 +32,7 @@ Installation
             {
             "require": {
                 "bitgandtter/google-bundle": "dev-master"
-            }
+            	}
             }
 
   2. Run the composer to download the bundle
@@ -302,7 +302,7 @@ to the provider id in the "provider" section in the config.yml:
 	}
 
 
-Finally one also needs to add a getGoogleId() and setFBData() method to the User model.
+Finally one also needs to add a getGoogleId() method to the User model.
 The following example also adds "firstname" and "lastname" properties:
 
     <?php

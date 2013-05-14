@@ -11,16 +11,13 @@
 
 namespace FOS\GoogleBundle\Security\Authentication\Provider;
 use FOS\GoogleBundle\Security\User\UserManagerInterface;
-
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
-
 use FOS\GoogleBundle\Security\Authentication\Token\GoogleUserToken;
 
 class GoogleProvider implements AuthenticationProviderInterface
@@ -81,6 +78,8 @@ class GoogleProvider implements AuthenticationProviderInterface
 
         return $newToken;
       }
+
+      throw new AuthenticationException( 'The Google user could not be retrieved from the session.');
     }
     catch ( AuthenticationException $failed )
     {
@@ -90,8 +89,6 @@ class GoogleProvider implements AuthenticationProviderInterface
     {
       throw new AuthenticationException( $failed->getMessage( ), null, ( int ) $failed->getCode( ), $failed);
     }
-
-    throw new AuthenticationException( 'The Google user could not be retrieved from the session.');
   }
 
   public function supports( TokenInterface $token )
