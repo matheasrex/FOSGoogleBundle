@@ -70,8 +70,8 @@ class GoogleProvider implements AuthenticationProviderInterface
     }
 
     try
-    {
-      if ( $uid = $this->googleApi->getOAuth( )->userinfo->get( )->getId( ) )
+    {      
+      if ( $uid = $this->googleApi->getOAuth( )->userinfo->get()["id"] )
       {
         $newToken = $this->createAuthenticatedToken( $uid );
         $newToken->setAttributes( $token->getAttributes( ) );

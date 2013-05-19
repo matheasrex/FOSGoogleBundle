@@ -3,14 +3,14 @@
 namespace FOS\GoogleBundle\Google;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Session\Session;
-use GoogleApi\Client;
-use GoogleApi\Contrib\apiOauth2Service as Service;
+use Google_Client;
+use Google_Oauth2Service as Service;
 
 /**
  * Implements Symfony2 session persistence for Google.
  *
  */
-class GoogleSessionPersistence extends Client
+class GoogleSessionPersistence extends Google_Client
 {
   const PREFIX = '_fos_google_';
 
