@@ -87,7 +87,7 @@ class GoogleProvider implements AuthenticationProviderInterface
     }
     catch ( \Exception $failed )
     {
-      throw new AuthenticationException( $failed->getMessage( ), null, ( int ) $failed->getCode( ), $failed);
+      throw new AuthenticationException( $failed->getMessage( ), ( int ) $failed->getCode( ), $failed);
     }
   }
 

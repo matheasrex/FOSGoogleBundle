@@ -23,12 +23,12 @@ use Symfony\Component\Security\Http\Logout\LogoutHandlerInterface;
 class GoogleHandler implements LogoutHandlerInterface
 {
   private $googleApi;
-
+  
   public function __construct( \apiClient $googleApi )
   {
     $this->googleApi = $googleApi;
   }
-
+  
   public function logout( Request $request, Response $response, TokenInterface $token )
   {
     $response->headers->clearCookie( 'gsr_' . $this->googleApi->getAppId( ) );

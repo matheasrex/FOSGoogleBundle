@@ -19,56 +19,56 @@ use Symfony\Component\Config\FileLocator;
 class FOSGoogleExtension extends Extension
 {
   protected $resources = array( 'google' => 'google.xml', 'security' => 'security.xml' );
-
+  
   public function load( array $configs, ContainerBuilder $container )
   {
     $processor = new Processor( );
     $configuration = new Configuration( );
     $config = $processor->processConfiguration( $configuration, $configs );
-
+    
     $this->loadDefaults( $container );
-
-    if ( isset( $config['alias'] ) )
-      $container->setAlias( $config['alias'], 'fos_google.api' );
-
+    
+    if ( isset( $config[ 'alias' ] ) )
+      $container->setAlias( $config[ 'alias' ], 'fos_google.api' );
+    
     foreach ( array( 'api', 'helper', 'twig' ) as $attribute )
-      $container->setParameter( 'fos_google.' . $attribute . '.class', $config['class'][$attribute] );
-
+      $container->setParameter( 'fos_google.' . $attribute . '.class', $config[ 'class' ][ $attribute ] );
+    
     foreach ( array( 'app_name', 'client_id', 'client_secret', 'state', 'access_type', 'approval_prompt', 'scopes' ) as $attribute )
-      $container->setParameter( 'fos_google.' . $attribute, $config[$attribute] );
-
+      $container->setParameter( 'fos_google.' . $attribute, $config[ $attribute ] );
+    
     /* if ( array_key_exists( 'callback_route', $config ) )
       $container->setParameter( 'fos_google.' . $attribute, $config['callback_route'] );
     else */
-    $container->setParameter( 'fos_google.callback_url', $config['callback_url'] );
+    $container->setParameter( 'fos_google.callback_url', $config[ 'callback_url' ] );
   }
-
+  
   /**
    * @codeCoverageIgnore
    */
-
+  
   public function getXsdValidationBasePath( )
   {
     return __DIR__ . '/../Resources/config/schema';
   }
-
+  
   /**
    * @codeCoverageIgnore
    */
-
+  
   public function getNamespace( )
   {
     return 'http://symfony.com/schema/dic/fos_google';
   }
-
+  
   /**
    * @codeCoverageIgnore
    */
-
+  
   protected function loadDefaults( $container )
   {
     $loader = new XmlFileLoader( $container, new FileLocator( __DIR__ . '/../Resources/config'));
-
+    
     foreach ( $this->resources as $resource )
     {
       $loader->load( $resource );

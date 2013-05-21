@@ -27,12 +27,12 @@ class Configuration implements ConfigurationInterface
    *
    * @return TreeBuilder
    */
-
+  
   public function getConfigTreeBuilder( )
   {
     $treeBuilder = new TreeBuilder( );
     $rootNode = $treeBuilder->root( 'fos_google' );
-
+    
     $rootNode->fixXmlConfig( 'permission', 'permissions' )->children( )// childrens
         ->scalarNode( 'app_name' )->isRequired( )->cannotBeEmpty( )->end( ) // app name
         ->scalarNode( 'client_id' )->isRequired( )->cannotBeEmpty( )->end( ) // client id
@@ -49,7 +49,7 @@ class Configuration implements ConfigurationInterface
         ->scalarNode( 'twig' )->defaultValue( 'FOS\GoogleBundle\Twig\Extension\GoogleExtension' )->end( ) // twig ext
         ->end( ) // end clasess
         ->end( )->end( );
-
+    
     return $treeBuilder;
   }
 }

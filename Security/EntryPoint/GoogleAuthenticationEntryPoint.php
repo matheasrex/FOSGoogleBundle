@@ -22,16 +22,16 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 class GoogleAuthenticationEntryPoint implements AuthenticationEntryPointInterface
 {
   protected $googleApi;
-
+  
   public function __construct( \apiClient $googleApi )
   {
     $this->googleApi = $googleApi;
   }
-
+  
   /**
    * {@inheritdoc}
    */
-
+  
   public function start( Request $request, AuthenticationException $authException = null )
   {
     return new RedirectResponse( $this->googleApi->createAuthUrl( ));
