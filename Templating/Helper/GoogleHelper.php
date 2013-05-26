@@ -12,20 +12,27 @@
 namespace FOS\GoogleBundle\Templating\Helper;
 use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\Templating\EngineInterface;
+use Google_Client;
 
 class GoogleHelper extends Helper
 {
   protected $templating;
+  protected $google;
   
-  public function __construct( EngineInterface $templating )
+  public function __construct( EngineInterface $templating, Google_Client $google )
   {
     $this->templating = $templating;
+    $this->google = $google;
   }
   
-  public function loginButton( $parameters = array( ), $name = null )
+  public function loginButton( )
   {
-    $name = $name ? : 'FOSGoogleBundle::loginButton.html.php';
-    return $this->templating->render( $name, $parameters );
+    return $this->templating->render( );
+  }
+  
+  public function loginUrl( )
+  {
+    return $this->google->createAuthUrl( );
   }
   
   /**

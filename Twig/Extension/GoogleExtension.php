@@ -36,9 +36,19 @@ class GoogleExtension extends \Twig_Extension
   
   public function getFunctions( )
   {
-    return array( 
-        'google_login_button' => new \Twig_Function_Method( $this, 'renderLoginButton',
-            array( 'is_safe' => array( 'html' ) )), );
+    $functions = array( );
+    $functions[ 'google_login_button' ] = new \Twig_Function_Method( $this, 'renderLoginButton');
+    return $functions;
+  }
+  
+  /**
+   * @see GoogleHelper::loginButton()
+   */
+  
+  public function renderLoginButton( $parameters = array( ), $name = null )
+  {
+    $helper = $this->container->get( 'fos_google.helper' );
+    return $helper->loginButton( $parameters, $name ? : 'FOSGoogleBundle::loginButton.html.twig' );
   }
   
   /**
@@ -50,15 +60,5 @@ class GoogleExtension extends \Twig_Extension
   public function getName( )
   {
     return 'google';
-  }
-  
-  /**
-   * @see GoogleHelper::loginButton()
-   */
-  
-  public function renderLoginButton( $parameters = array( ), $name = null )
-  {
-    return $this->container->get( 'fos_google.helper' )
-        ->loginButton( $parameters, $name ? : 'FOSGoogleBundle::loginButton.html.twig' );
   }
 }
