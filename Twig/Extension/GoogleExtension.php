@@ -38,6 +38,7 @@ class GoogleExtension extends \Twig_Extension
   {
     $functions = array( );
     $functions[ 'google_login_button' ] = new \Twig_Function_Method( $this, 'renderLoginButton');
+    $functions[ 'google_login_url' ] = new \Twig_Function_Method( $this, 'renderLoginUrl');
     return $functions;
   }
   
@@ -49,6 +50,16 @@ class GoogleExtension extends \Twig_Extension
   {
     $helper = $this->container->get( 'fos_google.helper' );
     return $helper->loginButton( $parameters, $name ? : 'FOSGoogleBundle::loginButton.html.twig' );
+  }
+  
+  /**
+   * @see GoogleHelper::loginUrl()
+   */
+  
+  public function renderUrlButton( $parameters = array( ), $name = null )
+  {
+    $helper = $this->container->get( 'fos_google.helper' );
+    return $helper->loginUrl( );
   }
   
   /**
