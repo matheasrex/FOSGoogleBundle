@@ -75,7 +75,9 @@ Installation
       	    access_type: online
       	    scopes: [userinfo.email, userinfo.profile]
       	    approval_prompt: auto
-      	    callback_url: http://yourdomain.com/login_check
+      	    callback_url: http://yourdomain.com/login_check?google=true
+      	    
+  NOTE: this extra parameter in the callback_url is mandatory needed to locate the google firewall
 
   6. Add this configuration if you want to use the `security component`:
 
@@ -138,6 +140,12 @@ Include the login button in your templates
 Just add the following code in one of your templates:
 
     {{ google_login_button() }}
+    
+Or if you want to use:
+
+	{{ google_login_button() }}
+	
+This will get you the login url
 
 This link its only a shotcut to generate a url to the real handler controller inside
 the GoogleBundle. You need to configure a route to this controller, the bundle
