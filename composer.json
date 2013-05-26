@@ -21,5 +21,6 @@
     "autoload": {
         "psr-0": { "FOS\\GoogleBundle": "" }
     },
-    "target-dir": "FOS/GoogleBundle"
+    "target-dir": "FOS/GoogleBundle",
+    "minimum-stability": "stable"
 }
