@@ -56,7 +56,7 @@ class GoogleExtension extends \Twig_Extension
    * @see GoogleHelper::loginUrl()
    */
   
-  public function renderUrlButton( $parameters = array( ), $name = null )
+  public function renderLoginUrl( $parameters = array( ), $name = null )
   {
     $helper = $this->container->get( 'fos_google.helper' );
     return $helper->loginUrl( );
