@@ -46,17 +46,17 @@ class GoogleExtension extends \Twig_Extension
    * @see GoogleHelper::loginButton()
    */
   
-  public function renderLoginButton( $parameters = array( ), $name = null )
+  public function renderLoginButton( )
   {
     $helper = $this->container->get( 'fos_google.helper' );
-    return $helper->loginButton( $parameters, $name ? : 'FOSGoogleBundle::loginButton.html.twig' );
+    return $helper->loginButton( );
   }
   
   /**
    * @see GoogleHelper::loginUrl()
    */
   
-  public function renderLoginUrl( $parameters = array( ), $name = null )
+  public function renderLoginUrl( )
   {
     $helper = $this->container->get( 'fos_google.helper' );
     return $helper->loginUrl( );
