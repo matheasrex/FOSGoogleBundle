@@ -27,7 +27,7 @@ class GoogleHelper extends Helper
   
   public function loginButton( )
   {
-    return $this->templating->render( );
+    return $this->templating->render( "FOSGoogleBundle::loginButton.html.twig" );
   }
   
   public function loginUrl( )
