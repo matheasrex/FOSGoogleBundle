@@ -234,7 +234,7 @@ to the provider id in the "provider" section in the config.yml:
 	    if ( !empty( $gData ) )
 	    {
 
-	      $email = $gData->getEmail(  );
+	      $email = $gData["email"];
 	      $user = $this->findUserByGIdOrEmail( $username, isset( $email ) ? $email : null );
 
 	      if ( empty( $user ) )
@@ -252,7 +252,7 @@ to the provider id in the "provider" section in the config.yml:
 		      $user->setGoogleID( $id );
 	      }
 
-	      $name = $gData->getName();
+	      $name = $gData["full_name"];
 
 	      if ( isset( $name ) )
 	      {
